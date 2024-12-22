@@ -34,3 +34,14 @@ const wordsToCensor = {
 
 // Apply censorship
 censorWords(wordsToCensor);
+
+// Listen for messages to toggle censorship
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.action === "toggleCensorship") {
+    if (message.enabled) {
+      censorWords(wordsToCensor);
+    } else {
+      window.location.reload(); // Reload the page to reset the content
+    }
+  }
+});
