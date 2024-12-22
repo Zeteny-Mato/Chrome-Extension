@@ -9,10 +9,13 @@
 <body>
   <h1>Word Censor</h1>
   <p>Censor the words France and French.</p>
-  <label>
-    <input type="checkbox" id="toggleCensorship">
-    Enable Censorship
-  </label>
+  <div class="switch-container">
+    <label class="switch">
+      <input type="checkbox" id="toggleCensorship">
+      <span class="slider"></span>
+    </label>
+    <span id="statusText">Enabled</span>
+  </div>
   <script src="popup.js"></script>
 </body>
 </html>

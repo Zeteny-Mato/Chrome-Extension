@@ -32,8 +32,12 @@ const wordsToCensor = {
   french: "fr*nch",
 };
 
-// Apply censorship
-censorWords(wordsToCensor);
+// Load the censorship state and apply it
+chrome.storage.local.get("censorshipEnabled", (data) => {
+  if (data.censorshipEnabled ?? true) { // Default to true
+    censorWords(wordsToCensor);
+  }
+});
 
 // Listen for messages to toggle censorship
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
