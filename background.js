@@ -1,4 +1,3 @@
 chrome.runtime.onInstalled.addListener(() => {
-    console.log("Word Censor installed!");
-  });
-  
+  console.log("Word Censor installed!");
+});

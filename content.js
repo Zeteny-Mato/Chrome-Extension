@@ -34,18 +34,19 @@ const wordsToCensor = {
 
 // Load the censorship state and apply it
 chrome.storage.local.get("censorshipEnabled", (data) => {
-  if (data.censorshipEnabled ?? true) { // Default to true
+  const isEnabled = data.censorshipEnabled !== undefined ? data.censorshipEnabled : true; // Default to true
+  if (isEnabled) {
     censorWords(wordsToCensor);
   }
 });
 
 // Listen for messages to toggle censorship
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message) => {
   if (message.action === "toggleCensorship") {
     if (message.enabled) {
       censorWords(wordsToCensor);
     } else {
-      window.location.reload(); // Reload the page to reset the content
+      window.location.reload(); // Reload to reset content
     }
   }
 });
