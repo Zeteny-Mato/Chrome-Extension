@@ -30,6 +30,8 @@ function censorWords(wordsToCensor) {
 const wordsToCensor = {
   france: "fr*nce",
   french: "fr*nch",
+  african-american: "black",
+  african_american: "black",
 };
 
 // Load the censorship state and apply it
