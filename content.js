@@ -8,7 +8,9 @@ function censorWords(wordsToCensor) {
 
       // Loop through the words to censor
       for (const [word, replacement] of Object.entries(wordsToCensor)) {
-        const regex = new RegExp(`\\b${word}\\b`, "gi"); // Case-insensitive match
+        // Modify the word pattern to handle spaces, hyphens, and underscores
+        const regexPattern = word.replace(/[-_ ]/g, "[-_ ]?");
+        const regex = new RegExp(`\\b${regexPattern}\\b`, "gi"); // Case-insensitive match
         text = text.replace(regex, replacement);
       }
 
@@ -30,8 +32,12 @@ function censorWords(wordsToCensor) {
 const wordsToCensor = {
   france: "fr*nce",
   french: "fr*nch",
-  african-american: "black",
-  african_american: "black",
+  "African-American": "black",
+  "african-american": "black",
+  "African American": "black",
+  "african american": "black",
+  "african_american": "black",
+  "African_American": "black",
 };
 
 // Load the censorship state and apply it
