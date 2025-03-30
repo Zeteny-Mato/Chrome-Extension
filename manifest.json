@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Word Censor",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Censors the words France and French.",
   "permissions": ["activeTab", "storage", "scripting"],
   "host_permissions": ["<all_urls>"],
